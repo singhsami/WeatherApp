@@ -4,6 +4,7 @@ const bodyParser=require("body-parser");
 
 const app=express();
 app.use(bodyParser.urlencoded({ extended: true}))
+
 app.get("/",(req,res)=>{
     res.sendFile(__dirname +"/index.html");
 })
@@ -17,7 +18,7 @@ const unit="metric"
 https.get(url,function(response){
     response.on("data",function(data){
         if(response.statusCode==200){
-            const weatherData=JSON.parse(data)
+       const weatherData=JSON.parse(data)
        const des=weatherData.weather[0].description
        const temp=weatherData.main.temp
        const icon=weatherData.weather[0].icon
@@ -39,5 +40,5 @@ app.post("/failure",(req,res)=>{
 })
 
 app.listen(3000,()=>{
-    console.log("Server is running.")
+    console.log("Server is running at 3000 port.")
 })
